@@ -16,8 +16,7 @@ describe("<CatShow />", () => {
             <Route path="/catshow/:id" element={<CatShow cats={mockCats} />}></Route>
         </Routes>
         </MemoryRouter>, div
-    )
-
+        )
         const catName = screen.getByText("Mittens")
         expect(catName).toBeInTheDocument()
     });
