@@ -16,6 +16,11 @@ const App = () => {
     console.log(cat)
   }
 
+  const updateCat = (cat, id) => {
+    console.log(cat)
+    console.log(id)
+  }
+
   return (
     <>
       <Header />
@@ -24,7 +29,7 @@ const App = () => {
         <Route path="/catindex" element={<CatIndex cats={mockCats} />} />
         <Route path="/catshow/:id" element={<CatShow cats={mockCats} />} />
         <Route path="/catnew" element={<CatNew createCat={createCat} />} />
-        <Route path="/catedit" element={<CatEdit />} />
+        <Route path="/catedit/:id" element={<CatEdit updateCat={updateCat} cats={mockCats} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
