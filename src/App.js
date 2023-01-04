@@ -12,7 +12,9 @@ import { Routes, Route } from "react-router-dom"
 import './App.css'
 
 const App = () => {
-
+  const createCat = (cat) => {
+    console.log(cat)
+  }
 
   return (
     <>
@@ -21,7 +23,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/catindex" element={<CatIndex cats={mockCats} />} />
         <Route path="/catshow/:id" element={<CatShow cats={mockCats} />} />
-        <Route path="/catnew" element={<CatNew />} />
+        <Route path="/catnew" element={<CatNew createCat={createCat} />} />
         <Route path="/catedit" element={<CatEdit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
