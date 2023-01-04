@@ -7,12 +7,11 @@ import CatShow from './pages/CatShow'
 import CatNew from './pages/CatNew'
 import CatEdit from './pages/CatEdit'
 import NotFound from './pages/NotFound'
-import mockCats from './mockCats'
 import { Routes, Route } from "react-router-dom"
 import './App.css'
 
 const App = () => {
-  const [cats, setCats] = useState(mockCats)
+  const [cats, setCats] = useState()
 
   const createCat = (cat) => {
     fetch("http://localhost:3000/cats", {

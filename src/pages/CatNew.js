@@ -36,7 +36,7 @@ const CatNew = ({ createCat }) => {
             <Col>
             <FormGroup>
               <Label for="age">Age</Label>
-              <Input type="number" name="age" onChange={handleChange} value={newCat.age} />
+              <Input type="number" name="age" min="0" onChange={handleChange} value={newCat.age} />
             </FormGroup>
             </Col>
          </Row>
