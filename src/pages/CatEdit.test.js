@@ -1,18 +1,22 @@
 import { render, screen } from "@testing-library/react"
-import CatNew from "./CatNew"
+import CatEdit from "./CatEdit"
 import { BrowserRouter } from "react-router-dom"
+import {
+  MemoryRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import mockCats from '../mockCats'
 
-describe("<CatNew />", () => {
+describe("<CatEdit />", () => {
   beforeEach(() => {
-    render(
-        <BrowserRouter>
-            <CatNew />
-        </BrowserRouter>
+    const div = document.createElement("div")
+    render(<MemoryRouter initialEntries={["/catedit/1"]}>
+    <Routes>
+      <Route path="/catedit/:id" element={<CatEdit cats={mockCats} />}></Route>
+    </Routes>
+    </MemoryRouter>, div
     )
-  })
-  it("renders a create a cat form", () => {
-    const element = screen.getByText(/Create a new cat/i)
-    expect(element).toBeInTheDocument()
   })
 
   it("has a form with entries for name, age, enjoys, and image", () => {

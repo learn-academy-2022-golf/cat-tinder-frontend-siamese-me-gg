@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -12,8 +12,15 @@ import { Routes, Route } from "react-router-dom"
 import './App.css'
 
 const App = () => {
+  const [cats, setCats] = useState(mockCats)
+
   const createCat = (cat) => {
     console.log(cat)
+  }
+
+  const updateCat = (cat, id) => {
+    console.log(cat)
+    console.log(id)
   }
 
   return (
@@ -21,10 +28,10 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/catindex" element={<CatIndex cats={mockCats} />} />
-        <Route path="/catshow/:id" element={<CatShow cats={mockCats} />} />
+        <Route path="/catindex" element={<CatIndex cats={cats} />} />
+        <Route path="/catshow/:id" element={<CatShow cats={cats} />} />
         <Route path="/catnew" element={<CatNew createCat={createCat} />} />
-        <Route path="/catedit" element={<CatEdit />} />
+        <Route path="/catedit/:id" element={<CatEdit updateCat={updateCat} cats={cats} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
