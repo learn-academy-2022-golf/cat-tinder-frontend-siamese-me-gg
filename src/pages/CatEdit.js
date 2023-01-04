@@ -45,7 +45,7 @@ const handleSubmit = () => {
             <Col>
             <FormGroup>
               <Label for="age">Age</Label>
-              <Input type="number" name="age" onChange={handleChange} value={editCat.age} />
+              <Input type="number" name="age" min="0" onChange={handleChange} value={editCat.age} />
             </FormGroup>
             </Col>
          </Row>
