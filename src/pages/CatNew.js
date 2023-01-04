@@ -1,9 +1,80 @@
-import React from 'react'
+import React, { useState } from "react"
+import { Form, FormGroup, Label, Input, Button, Row, Col} from "reactstrap"
+import { useNavigate } from "react-router-dom"
+import '../App.css'
 
-const CatNew = () => {
-    return (
-        <div>CatNew - Make a new friend!</div>
-    )
+
+const CatNew = ({ createCat }) => {
+  const navigate = useNavigate()
+  const [newCat, setNewCat] = useState({
+    name: "",
+    age: "",
+    enjoys: "",
+    image: ""
+  })
+
+  const handleChange = (e) => {
+    setNewCat({ ...newCat, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = () => {
+    createCat(newCat)
+    navigate("/catindex")
+  }
+
+  return (
+    <div className="cat-form">
+        <Form >
+            <h2 className="form-title">Create a new cat</h2>
+         <Row>
+            <Col>
+            <FormGroup >
+              <Label for="name">Name</Label>
+              <Input  type="text" name="name" onChange={handleChange} value={newCat.name} />
+            </FormGroup>
+            </Col>
+            <Col>
+            <FormGroup>
+              <Label for="age">Age</Label>
+              <Input type="number" name="age" onChange={handleChange} value={newCat.age} />
+            </FormGroup>
+            </Col>
+         </Row>
+          
+        <FormGroup>
+          <Label for="enjoys">Enjoys</Label>
+          <Input type="text" name="enjoys" onChange={handleChange} value={newCat.enjoys} />
+        </FormGroup>
+        <Row>
+        <Col>
+        <FormGroup>
+          <Label for="image">Image</Label>
+          <Input type="url" name="image"  onChange={handleChange} value={newCat.image} />
+        </FormGroup>
+        </Col>
+        <Col>
+        <div>
+      {newCat.image &&
+          <img
+          height={300}
+          width={300}
+          src={newCat.image}
+          alt="Thumb"
+          />
+        }
+      </div>
+        </Col>
+        </Row>
+        <Button onClick={handleSubmit} name="submit">
+          Submit Cat
+        </Button>
+        
+      </Form>
+      
+      
+     
+    </div>
+  )
 }
 
 export default CatNew
