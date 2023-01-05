@@ -9,10 +9,10 @@ const CatEdit = ({ cats, updateCat }) => {
   let currentCat = cats?.find((cat) => cat.id === +id)
 
   const [editCat, setEditCat] = useState({
-    name: currentCat.name,
-    age: currentCat.age,
-    enjoys: currentCat.enjoys,
-    image: currentCat.image
+    name: currentCat?.name,
+    age: currentCat?.age,
+    enjoys: currentCat?.enjoys,
+    image: currentCat?.image
   })
   const [previewImage, setPreviewImage] = useState("")
   const handleChange = (e) => {
@@ -28,10 +28,13 @@ const CatEdit = ({ cats, updateCat }) => {
 
 const navigate = useNavigate()
 const handleSubmit = () => {
-  updateCat(editCat, currentCat.id)
+  updateCat(editCat, currentCat?.id)
   navigate(`/catshow/${id}`)
 }
 
+if (!cats) {
+  return <div>loading...</div>
+}
   return (
     <div className='cat-form'>
       <Form >
@@ -39,36 +42,37 @@ const handleSubmit = () => {
             <Col>
             <FormGroup >
               <Label for="name">Name</Label>
-              <Input  type="text" name="name" onChange={handleChange} value={editCat.name} />
+              <Input  type="text" name="name" onChange={handleChange} value={editCat?.name} />
             </FormGroup>
             </Col>
             <Col>
             <FormGroup>
               <Label for="age">Age</Label>
-              <Input type="number" name="age" min="0" onChange={handleChange} value={editCat.age} />
+              <Input type="number" name="age" min="0" onChange={handleChange} value={editCat?.age} />
             </FormGroup>
             </Col>
          </Row>
           
         <FormGroup>
           <Label for="enjoys">Enjoys</Label>
-          <Input type="text" name="enjoys" onChange={handleChange} value={editCat.enjoys} />
+          <Input type="text" name="enjoys" onChange={handleChange} value={editCat?.enjoys} />
         </FormGroup>
         <Row>
         <Col>
         <FormGroup>
           <Label for="image">Image</Label>
-          <Input type="url" name="image"  onChange={handleImage} value={editCat.image} />
+          <Input type="url" name="image"  onChange={handleImage} value={editCat?.image} />
         </FormGroup>
         </Col>
         <Col>
         <div>
-      {editCat.image &&
+      {editCat?.image &&
           <img
           height={300}
           width={300}
-          src={editCat.image}
+          src={editCat?.image}
           alt="Thumb"
+          style={{borderRadius: "10%"}}
           />
         }
       </div>

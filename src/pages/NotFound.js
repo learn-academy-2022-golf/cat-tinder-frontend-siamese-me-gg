@@ -4,8 +4,7 @@ import funnyCats from '../assets/funny-cats.jpeg'
 const NotFound = () => {
     return (
         <div className="not-found">
-            NotFound - Oopsie, try again
-            <img src={funnyCats} alt="Funny Cats" />
+            <h1>NotFound - Oopsie, try again</h1>
         </div>
     )
 }

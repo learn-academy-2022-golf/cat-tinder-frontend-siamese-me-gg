@@ -2,7 +2,7 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import { NavLink } from "react-router-dom"
 import "../App.css"
-import { Button } from "reactstrap"
+import { Button, Row, Col } from "reactstrap"
 
 const CatShow = ({ cats, deleteCat }) => {
     const { id } = useParams()
@@ -21,17 +21,21 @@ const CatShow = ({ cats, deleteCat }) => {
                         src={currentCat.image}
                         className="cat-show-img"
                     />
-                    <p>{currentCat.name}</p>
-                    <p>{currentCat.age}</p>
-                    <p>{currentCat.enjoys}</p>
+                    <p>{`Hi, my name is ${currentCat.name} and I am ${currentCat.age} years old. I really like ${currentCat.enjoys.toLowerCase()}`}</p>
                 </>
             )}
-            <NavLink to={`/catedit/${currentCat.id}`} className="nav-link">
-                Edit Cat Profile
-            </NavLink>
-            <NavLink to="/catindex">
-                <Button onClick={deleteMe}>Delete Cat Profile</Button>
-            </NavLink>
+            <Row>
+                <Col>
+                    <NavLink to={`/catedit/${currentCat?.id}`} className="nav-link">
+                        <Button outline color = "secondary">Edit</Button>
+                    </NavLink>
+                </Col>
+                <Col>
+                    <NavLink to="/catindex">
+                        <Button onClick={deleteMe} outline color = "danger">Delete</Button>
+                    </NavLink>
+                </Col>
+            </Row>
         </main>
     )
 }
