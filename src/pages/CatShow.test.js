@@ -12,11 +12,10 @@ describe("<CatShow />", () => {
     it("renders without crashing", () => {
         const div = document.createElement("div")
         render(<MemoryRouter initialEntries={["/catshow/1"]}>
-        <Routes>
-            <Route path="/catshow/:id" element={<CatShow cats={mockCats} />}></Route>
-        </Routes>
-        </MemoryRouter>, div
-        )
+            <Routes>
+                <Route path="/catshow/:id" element={<CatShow cats={mockCats} />}></Route>
+            </Routes>
+        </MemoryRouter>, div)
         const catName = screen.getByText("Mittens")
         expect(catName).toBeInTheDocument()
     });

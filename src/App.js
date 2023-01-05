@@ -64,13 +64,11 @@ const App = () => {
       .catch((errors) => console.log("delete errors:", errors))
   }
 
-
-
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home cats={cats} readCat={readCat} />} />
         <Route path="/catindex" element={<CatIndex cats={cats} />} />
         <Route path="/catshow/:id" element={<CatShow cats={cats} deleteCat={deleteCat} />} />
         <Route path="/catnew" element={<CatNew createCat={createCat} />} />
